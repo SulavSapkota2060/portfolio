@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sulav Sapkota</title>
+  <meta name="description" content="Sulav Sapkota is a math and computer science student at Washington and Lee University who builds data and machine learning projects. From Kathmandu.">
+  <meta property="og:title" content="Sulav Sapkota">
+  <meta property="og:description" content="Math and CS student building data and ML projects. From Kathmandu.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#040806">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add("js");</script>
+  <script src="script.js" defer></script>
+  <script src="neural.js" defer></script>
+  <script src="visuals.js" defer></script>
+</head>
+<body>
+
+<a class="skip" href="#projects">Skip to projects</a>
+
+<div class="world" aria-hidden="true">
+  <div class="grid-dots"></div>
+  <div class="contour contour-a"></div>
+  <div class="contour contour-b"></div>
+</div>
+
+<nav class="nav" id="nav" aria-label="Main">
+  <a class="brand" href="#top">sulav<span class="blink-cursor">_</span></a>
+  <ul>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#about">about</a></li>
+    <li><a href="#experience">experience</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
+</nav>
+
+<header class="hero" id="top">
+  <canvas class="neural" id="neural" aria-hidden="true"></canvas>
+  <div class="scan" aria-hidden="true"></div>
+  <svg class="flags" id="flags" aria-hidden="true" focusable="false"></svg>
+
+  <div class="hero-inner">
+    <p class="comment" lang="ne">// नमस्ते</p>
+    <p class="prompt"><span class="user">sulav@lexington</span><span class="sep">:</span><span class="path">~</span><span class="sep">$</span> whoami</p>
+    <h1>Sulav Sapkota</h1>
+    <p class="tagline"><span id="tagline-full">Math and CS student at Washington and Lee, class of 2029. I build data and ML projects.</span><span id="tagline-typed" aria-hidden="true" hidden></span></p>
+    <p class="cta">
+      <a class="btn btn-primary" href="resume.pdf">Resume</a>
+      <a class="btn" href="https://github.com/SulavSapkota2060" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/sulav-sapkota/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="mailto:ssapkota@mail.wlu.edu">Email</a>
+    </p>
+  </div>
+
+  <p class="statusbar" id="statusbar">
+    <span class="status-dot" aria-hidden="true"></span>
+    <span id="clock">Lexington, VA</span>
+    <span id="lastpush" hidden></span>
+  </p>
+</header>
+
+<main>
+
+  <div class="ridge" data-seed="4" aria-hidden="true"></div>
+
+  <section class="section" id="projects">
+    <div class="section-head reveal">
+      <svg class="bunting" data-flags="7" aria-hidden="true" focusable="false"></svg>
+      <p class="eyebrow">01 // projects</p>
+      <h2>Projects</h2>
+      <p class="section-lede">The wildfire charts and the earthquake explorer use real results from the repos. The gossip network is a small live version of my simulator. The microplastics and dashboard visuals are illustrations.</p>
+    </div>
+
+    <div class="projects">
+
+      <article class="project featured reveal">
+        <div class="media-wrap">
+          <figure class="media">
+            <canvas id="viz-ladder" role="img" aria-label="Bar chart of how accuracy climbed from 68.9 percent for a simple rule to 91.5 percent for the final model as features were added"></canvas>
+            <img id="wf-roc" src="img/wildfire-roc_calibration.png" width="1198" height="450" loading="lazy" hidden
+                 alt="ROC curves and calibration plot for the wildfire model, for cross-validation on 2017 to 2019 and validation on 2020 to 2021">
+            <img id="wf-imp" src="img/wildfire-fire_accuracy_importance.png" width="1308" height="483" loading="lazy" hidden
+                 alt="Histogram of accuracy within each fire, and the top 12 features by importance in the final XGBoost model">
+          </figure>
+          <div class="tabs" role="group" aria-label="Wildfire project views" data-all="viz-ladder,wf-roc,wf-imp">
+            <button type="button" class="tab" data-show="viz-ladder" aria-pressed="true">Accuracy ladder</button>
+            <button type="button" class="tab" data-show="wf-roc" aria-pressed="false">ROC &amp; calibration</button>
+            <button type="button" class="tab" data-show="wf-imp" aria-pressed="false">Feature importance</button>
+          </div>
+          <p class="viz-note">Real results from the repo. Random Forest in every row except the last, and the axis starts at 50%.</p>
+        </div>
+        <div class="project-body">
+          <p class="badge">featured &middot; research</p>
+          <h3>Wildfire retardant drops: which side was protected?</h3>
+          <p>A geospatial machine-learning pipeline that predicts which side of an aerial fire-retardant drop is the protected side, using day-of-burning rasters and the drop geometry. Research at Washington and Lee. The biggest jump came from comparing each drop's two sides across the whole fire, not just next to the drop.</p>
+          <ul class="metrics">
+            <li><strong>91.5%</strong><span>fire-grouped 5-fold CV (20,022 drop sides, 420 fires)</span></li>
+            <li><strong>89.6%</strong><span>on 2020&ndash;2021 drops labeled by different people</span></li>
+            <li><strong>68.9%</strong><span>for a simple rule baseline</span></li>
+          </ul>
+          <ul class="tags"><li>Python</li><li>GeoPandas</li><li>Rasterio</li><li>XGBoost</li><li>scikit-learn</li></ul>
+          <p class="links">
+            <a href="https://github.com/SulavSapkota2060/wildfire-retardant-drop-ml" target="_blank" rel="noopener">Code</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <div class="media-wrap">
+          <figure class="media">
+            <canvas id="viz-quake" role="img" aria-label="Magnitude histogram on a log scale with a movable cutoff, and a chart of the b-value at each cutoff"></canvas>
+            <img id="shot-quake" src="img/quake-atlas.png" width="1100" height="1400" loading="lazy" hidden
+                 alt="Screenshot of the Himalayan Quake Atlas dashboard: headline numbers, earthquakes per year, a magnitude histogram and a b-value chart">
+          </figure>
+          <label class="slider" id="cutoff-wrap">
+            <span>cutoff</span>
+            <input id="cutoff" type="range" min="0" max="12" step="1" value="8" aria-label="Completeness cutoff magnitude">
+            <output id="cutoff-out" for="cutoff">M4.8</output>
+          </label>
+          <div class="tabs" role="group" aria-label="Quake Atlas views" data-all="viz-quake,cutoff-wrap,shot-quake">
+            <button type="button" class="tab" data-show="viz-quake,cutoff-wrap" aria-pressed="true">Cutoff explorer</button>
+            <button type="button" class="tab" data-show="shot-quake" aria-pressed="false">Dashboard</button>
+          </div>
+          <p class="viz-note">Real data: shallow quakes (70 km or less) from the dataset. Drag the cutoff and watch b change.</p>
+        </div>
+        <h3>Himalayan Quake Atlas</h3>
+        <p>A Python and SQLite pipeline over 10,125 USGS earthquakes (1990&ndash;2026) with an interactive map and charts. I estimate the Gutenberg-Richter b-value, and the main lesson is that the answer swings from 0.79 to 1.27 depending on the completeness cutoff you pick, so the dashboard shows the whole curve and explains the choice.</p>
+        <ul class="tags"><li>Python</li><li>SQLite</li><li>pandas</li><li>Chart.js</li><li>Leaflet</li></ul>
+        <p class="links">
+          <a href="https://sulavsapkota2060.github.io/quake-atlas/" target="_blank" rel="noopener">Live demo</a>
+          <a href="https://github.com/SulavSapkota2060/quake-atlas" target="_blank" rel="noopener">Code</a>
+        </p>
+      </article>
+
+      <article class="project reveal">
+        <div class="media-wrap">
+          <figure class="media">
+            <canvas id="viz-gossip" role="img" aria-label="Animation of a rumor spreading through a network of 110 people, with counters for how many know it and how many messages were sent"></canvas>
+            <div class="viz-controls" role="group" aria-label="Gossip fanout">
+              <button type="button" data-fanout="1" aria-pressed="true">fanout 1</button>
+              <button type="button" data-fanout="3" aria-pressed="false">fanout 3</button>
+              <button type="button" data-fanout="6" aria-pressed="false">fanout 6</button>
+            </div>
+          </figure>
+          <p class="viz-note">A small live version of the model: 110 nodes, 15% message loss. Pick a fanout and watch it spread. The real runs use 1,000 nodes in C++.</p>
+        </div>
+        <h3>Rumor Mill</h3>
+        <p>A C++20 discrete-event simulator of gossip spreading through a network, with a priority-queue engine, seeded randomness, message loss and latency. Across 180 runs on a 1,000-node graph, raising the fanout from 1 to 6 cut the time to reach 99% of nodes from 10.6 to 1.8, but total messages stayed around 10&ndash;11k, mostly duplicates.</p>
+        <ul class="tags"><li>C++20</li><li>Python</li><li>Make</li></ul>
+        <p class="links"><a href="https://github.com/SulavSapkota2060/rumor-mill-gossip-sim" target="_blank" rel="noopener">Code</a></p>
+      </article>
+
+      <article class="project reveal">
+        <div class="media-wrap">
+          <figure class="media">
+            <canvas id="viz-micro" role="img" aria-label="Illustration of a microscope field where a scan finds and labels foam, pellet, film, fiber and fragment particles one by one, with a running count for each type"></canvas>
+          </figure>
+          <p class="viz-note">Illustration of the task, not project data.</p>
+        </div>
+        <h3>Microplastics detection</h3>
+        <p>Deep learning to find and classify microplastics in stereo-microscope images, at Kathmandu Institute of Applied Science. U-Net and VGG16 models reached 82% test accuracy on binary detection (783 images) and were extended to five plastic types: foam, pellet, film, fiber and fragment. YOLOv8 counted particles (0.40 mAP50). It won Best Poster at MoChWo 2024 in Kathmandu.</p>
+        <ul class="tags"><li>TensorFlow</li><li>YOLOv8</li><li>OpenCV</li></ul>
+        <p class="links"><span class="muted">Research project, no public code</span></p>
+      </article>
+
+      <article class="project reveal">
+        <div class="media-wrap">
+          <figure class="media">
+            <canvas id="viz-dash" role="img" aria-label="Illustration of a health dashboard layout: a row of seven columns for the provinces and a grid of twelve small indicator charts, all animating"></canvas>
+          </figure>
+          <p class="viz-note">Illustration of the layout, not real data.</p>
+        </div>
+        <h3>Health indicators dashboard</h3>
+        <p>A React and Node.js dashboard that charts 12 health indicators across Nepal's 7 provinces, with a map you can click to zoom into individual districts. Built at Hello World I.T Solutions and live in production.</p>
+        <ul class="tags"><li>React</li><li>Node.js</li><li>Chart.js</li></ul>
+        <p class="links"><span class="muted">Client work, no public code</span></p>
+      </article>
+
+    </div>
+  </section>
+
+  <div class="ridge" data-seed="9" aria-hidden="true"></div>
+
+  <section class="section" id="about">
+    <div class="section-head reveal">
+      <svg class="bunting" data-flags="7" aria-hidden="true" focusable="false"></svg>
+      <p class="eyebrow">02 // about</p>
+      <h2>About</h2>
+    </div>
+    <div class="about reveal">
+      <div class="about-text">
+        <p>I'm from Kathmandu, and I now study math and computer science at Washington and Lee University in Virginia. I like problems where careful math meets messy real data: burn maps from wildfires, microscope images, and 36 years of earthquake records. I'm happiest when I can explain exactly why a number is what it is, including where it could be wrong.</p>
+        <p>Outside the lab, I co-founded Yukti Foundation, an empowerment-focused NGO in Kathmandu. Our first project installed a sanitary pad vending machine for women at Dashrath Stadium, paid for with the $280+ we raised, and we volunteer at community sports events like the SAFF Women's Tournament. I also shadow stock pitches at the Williams Investment Society, and before college I competed in chemistry and informatics olympiads and built a maze-solving robot with Arduino.</p>
+      </div>
+      <div class="codecard" role="group" aria-label="Profile summary">
+        <div class="codecard-bar"><i></i><i></i><i></i><span>profile.json</span></div>
+<pre><code><span class="p">{</span>
+  <span class="k">"from"</span><span class="p">:</span>      <span class="s">"Kathmandu, Nepal"</span><span class="p">,</span>
+  <span class="k">"studying"</span><span class="p">:</span>  <span class="s">"B.S. Math &amp; CS (intended), W&amp;L '29"</span><span class="p">,</span>
+  <span class="k">"codes_in"</span><span class="p">:</span>  <span class="p">[</span><span class="s">"Python"</span><span class="p">,</span> <span class="s">"C++"</span><span class="p">,</span> <span class="s">"JavaScript"</span><span class="p">,</span>
+                <span class="s">"SQL"</span><span class="p">,</span> <span class="s">"R"</span><span class="p">],</span>
+  <span class="k">"speaks"</span><span class="p">:</span>    <span class="p">[</span><span class="s">"Nepali"</span><span class="p">,</span> <span class="s">"English"</span><span class="p">,</span> <span class="s">"Hindi"</span><span class="p">]</span>
+<span class="p">}</span></code></pre>
+      </div>
+    </div>
+  </section>
+
+  <div class="ridge" data-seed="15" aria-hidden="true"></div>
+
+  <section class="section" id="experience">
+    <div class="section-head reveal">
+      <svg class="bunting" data-flags="7" aria-hidden="true" focusable="false"></svg>
+      <p class="eyebrow">03 // experience</p>
+      <h2>Experience</h2>
+    </div>
+    <ol class="timeline">
+      <li class="reveal">
+        <span class="when">June 2026 &ndash; present</span>
+        <h3>Machine Learning Research Assistant <span class="where">&middot; Washington and Lee University</span></h3>
+        <p>Predicting the protected side of aerial fire-retardant drops from burn maps, with leakage-safe evaluation.</p>
+      </li>
+      <li class="reveal">
+        <span class="when">June 2023 &ndash; June 2025</span>
+        <h3>Machine Learning Researcher <span class="where">&middot; Kathmandu Institute of Applied Science</span></h3>
+        <p>Segmentation, classification and detection of microplastics in microscope images.</p>
+      </li>
+      <li class="reveal">
+        <span class="when">June 2024 &ndash; August 2024</span>
+        <h3>Student Researcher <span class="where">&middot; Water Stories of Patan</span></h3>
+        <p>Led a 6-member team on a digital water-heritage project: 30+ local surveys, policy mapping from 1963 to 2015, and a public website.</p>
+      </li>
+      <li class="reveal">
+        <span class="when">January 2021 &ndash; June 2024</span>
+        <h3>Software Developer <span class="where">&middot; Hello World I.T Solutions</span></h3>
+        <p>React, Node.js and Django projects, including a health dashboard in production and a fixtures site for a Nepali-owned soccer team in Australia.</p>
+      </li>
+    </ol>
+  </section>
+
+  <div class="ridge" data-seed="22" aria-hidden="true"></div>
+
+  <section class="section contact" id="contact">
+    <div class="section-head section-head-center reveal">
+      <svg class="bunting" data-flags="9" aria-hidden="true" focusable="false"></svg>
+      <p class="eyebrow">04 // contact</p>
+      <h2>Say Hello!</h2>
+    </div>
+    <p class="contact-lede reveal">I'm looking for software engineering and machine learning internships. The quickest way to reach me is email.</p>
+    <p class="cta cta-contact reveal">
+      <a class="btn btn-primary" href="mailto:ssapkota@mail.wlu.edu">ssapkota@mail.wlu.edu</a>
+      <a class="btn" href="resume.pdf">Resume (PDF)</a>
+      <a class="btn" href="https://github.com/SulavSapkota2060" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/sulav-sapkota/" target="_blank" rel="noopener">LinkedIn</a>
+    </p>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-ridge" id="footer-ridge" aria-hidden="true"></div>
+  <div class="footer-body">
+    <p class="thanks" lang="ne">Thank you . धन्यवाद</p>
+    <div class="flag-strip" aria-hidden="true"></div>
+    <p class="footer-note">HTML &middot; CSS &middot; JavaScript &middot; Canvas</p>
+  </div>
+</footer>
+
+<div class="altimeter" id="altimeter" aria-hidden="true">
+  <span class="alt-arrow">&#9650;</span>
+  <span><span id="alt-m">1,400</span> m</span>
+  <span class="alt-place" id="alt-place">Kathmandu</span>
+</div>
+
+</body>
+</html>
